@@ -39,7 +39,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Telefono</label>
-                            <input class="form-control" type="tel" minlength="10" maxlength="10" name="	tel">
+                            <input class="form-control" type="tel" minlength="10" maxlength="10" name="tel">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Fecha de nacimiento</label>
@@ -51,7 +51,48 @@
                     </form>
                 </div>
                 <div class="col-9">
-                    tabla
+                    <table class="table">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellido paterno</th>
+                            <th>Apellido materno</th>
+                            <th>Teléfono</th>
+                            <th>Correo electrónico</th>
+                            <th>Fecha de nacimiento</th>
+                            <th>Acciones</th>
+                        </tr>
+
+                        <?php
+                        include_once "./connection/connect.php";
+
+                        $sql = "SELECT * FROM usuarios";
+
+                        $result = $conexion->query($sql);
+
+                        //echo $result->num_rows;
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>$row[id_usuario]</td>";
+                                echo "<td>$row[nombre]</td>";
+                                echo "<td>$row[ap_paterno]</td>";
+                                echo "<td>$row[ap_materno]</td>";
+                                echo "<td>$row[tel]</td>";
+                                echo "<td>$row[c_electronico]</td>";
+                                echo "<td>$row[f_nacimiento]</td>";
+                                echo "<td>
+                                    <a class='btn btn-warning' href='./actions/edit.php?id_usuario=$row[id_usuario]'>Editar</a>
+                                    <a class='btn btn-danger' href='./actions/delete.php?id_usuario=$row[id_usuario]'>Eliminar</a>
+                                </td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "No hay datos en la base datos";
+                        }
+                        ?>
+                    </table>
                 </div>
             </div>
         </div>

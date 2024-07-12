@@ -15,5 +15,5 @@ if ($conexion->connect_errno) {
     echo "Error: " . $conexion->connect_error . "\n";
     exit;
 } else {
-    echo "Conexión exitosa";
+    //echo "Conexión exitosa";
 }

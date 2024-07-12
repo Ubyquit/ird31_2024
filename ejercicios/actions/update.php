@@ -10,9 +10,9 @@ $ap_materno = $_POST['ap_materno'];
 $c_electronico = $_POST['c_electronico'];
 $tel = $_POST['tel'];
 $f_nacimiento = $_POST['f_nacimiento'];
+$id_usuario = $_POST['id_usuario'];
 
-$sql = "INSERT INTO usuarios (nombre, ap_paterno, ap_materno, c_electronico, tel, f_nacimiento) 
-VALUES ('$nombre', '$ap_paterno', '$ap_materno', '$c_electronico', '$tel', '$f_nacimiento')";
+$sql = "";
 
 $conexion->query($sql);
 
